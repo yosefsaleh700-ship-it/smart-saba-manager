@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SABA SYS Technologies | سبأ سيس للحلول البرمجية وتقنية الأنظمة</title>
+    <!-- Google Fonts: Cairo -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-main: #0F172A;
+            --bg-card: rgba(30, 41, 59, 0.7);
+            --bg-card-hover: rgba(30, 41, 59, 0.95);
+            --border-glass: rgba(255, 255, 255, 0.1);
+            --accent-blue: #38BDF8;
+            --accent-cyan: #06B6D4;
+            --accent-emerald: #10B981;
+            --accent-gold: #F59E0B;
+            --accent-purple: #8B5CF6;
+            --text-primary: #F8FAFC;
+            --text-secondary: #94A3B8;
+            --text-muted: #64748B;
+            --radius-lg: 16px;
+            --radius-md: 12px;
+            --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 15%, rgba(56, 189, 248, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 85% 85%, rgba(139, 92, 246, 0.08) 0%, transparent 40%);
+            background-attachment: fixed;
+        }
+
+        /* Glassmorphism Header */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border-glass);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #0F172A;
+            font-size: 1.5rem;
+            font-weight: 900;
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
+        }
+
+        .brand-text h1 {
+            font-size: 1.3rem;
+            font-weight: 900;
+            letter-spacing: 0.5px;
+            background: linear-gradient(to left, #FFF, var(--accent-blue));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .brand-text p {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent-blue);
+        }
+
+        /* Container & Grid */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Corporate Section */
+        .corp-hero {
+            padding: 60px 0 40px 0;
+            text-align: center;
+        }
+
+        .corp-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            color: var(--accent-blue);
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .corp-hero h2 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .corp-hero p {
+            max-width: 800px;
+            margin: 0 auto 30px auto;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .services-pills {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        .pill {
+            background: var(--bg-card);
+            border: 1px solid var(--border-glass);
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .pill i {
+            color: var(--accent-blue);
+        }
+
+        /* Platform Highlight Section */
+        .platform-section {
+            background: linear-gradient(180deg, rgba(30, 41, 59, 0.4) 0%, rgba(15, 23, 42, 0.8) 100%);
+            border: 1px solid var(--border-glass);
+            border-radius: 24px;
+            padding: 50px 30px;
+            margin: 40px 0;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-glass);
+        }
+
+        .platform-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .platform-title-badge {
+            background: linear-gradient(90deg, #F59E0B, #10B981);
+            color: #0F172A;
+            font-weight: 900;
+            font-size: 0.8rem;
+            padding: 4px 12px;
+            border-radius: 6px;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .platform-header h3 {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: #FFF;
+        }
+
+        .platform-header p.quote {
+            color: var(--accent-gold);
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-top: 10px;
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius-lg);
+            padding: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .feature-card:hover {
+            background: var(--bg-card-hover);
+            transform: translateY(-5px);
+            border-color: rgba(56, 189, 248, 0.4);
+        }
+
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: var(--radius-md);
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--accent-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .feature-card h4 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--text-primary);
+        }
+
+        .feature-card ul {
+            list-style: none;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .feature-card ul li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-right: 18px;
+        }
+
+        .feature-card ul li::before {
+            content: "•";
+            color: var(--accent-blue);
+            font-weight: bold;
+            position: absolute;
+            right: 0;
+        }
+
+        /* Launch Gift Banner */
+        .gift-banner {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(56, 189, 248, 0.15) 100%);
+            border: 2px dashed var(--accent-emerald);
+            border-radius: var(--radius-lg);
+            padding: 30px;
+            text-align: center;
+            margin: 30px 0;
+            position: relative;
+        }
+
+        .gift-badge {
+            position: absolute;
+            top: -15px;
+            right: 50%;
+            transform: translateX(50%);
+            background: var(--accent-emerald);
+            color: #0F172A;
+            font-weight: 900;
+            padding: 4px 18px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+
+        .gift-banner h4 {
+            font-size: 1.4rem;
+            color: #FFF;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .gift-banner p {
+            color: var(--text-secondary);
+            max-width: 850px;
+            margin: 0 auto 15px auto;
+            font-size: 0.95rem;
+        }
+
+        .gift-action-text {
+            color: var(--accent-gold);
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+
+        /* Download Section */
+        .download-box {
+            text-align: center;
+            padding: 30px;
+            background: rgba(15, 23, 42, 0.9);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-glass);
+            margin-top: 30px;
+        }
+
+        .btn-download {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
+            color: #0F172A;
+            font-weight: 900;
+            font-size: 1.2rem;
+            padding: 16px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 30px rgba(56, 189, 248, 0.3);
+        }
+
+        .btn-download:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 45px rgba(56, 189, 248, 0.5);
+        }
+
+        .file-info {
+            margin-top: 12px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        /* Ad Slots Placeholder */
+        .ad-space {
+            background: rgba(30, 41, 59, 0.3);
+            border: 1px dashed rgba(255, 255, 255, 0.15);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin: 30px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border-glass);
+            padding: 40px 0 20px 0;
+            margin-top: 60px;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .footer-links a {
+            color: var(--accent-blue);
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .corp-hero h2 {
+                font-size: 1.8rem;
+            }
+            .platform-header h3 {
+                font-size: 1.6rem;
+            }
+            .btn-download {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <a href="#" class="brand-logo">
+            <div class="logo-icon">S</div>
+            <div class="brand-text">
+                <h1>SABA SYS Technologies</h1>
+                <p>سبأ سيس للحلول البرمجية وتقنية الأنظمة</p>
+            </div>
+        </a>
+        <nav>
+            <ul>
+                <li><a href="#about">عن المؤسسة</a></li>
+                <li><a href="#platform">منصة الميكروتك</a></li>
+                <li><a href="#download">التحميل والخدمات</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+
+        <!-- Corporate Hero -->
+        <section id="about" class="corp-hero">
+            <div class="corp-badge">
+                <i class="fa-solid fa-shield-halved"></i> المؤسسة البرمجية الرائدة في حلول الأنظمة
+            </div>
+            <h2>ابتكار أذكى البرمجيات والأدوات المساعدة لقطاع الشبكات والاتصالات</h2>
+            <p>
+                نحن مؤسسة <strong>SABA SYS Technologies</strong> نكرّس خبرتنا العميقة في هندسة شبكات MikroTik، بناء التطبيقات متعددة المنصات (Cross-Platform)، وتطوير قواعد البيانات المحلية السريعة (Offline-First)، لتوفير بيئة عمل مستقرة وأدوات قيادة استباقية للشبكات والمنشآت.
+            </p>
+
+            <div class="services-pills">
+                <div class="pill"><i class="fa-solid fa-server"></i> حلول شبكات RouterOS</div>
+                <div class="pill"><i class="fa-solid fa-database"></i> قواعد بيانات محددة السرعة (Offline-First)</div>
+                <div class="pill"><i class="fa-solid fa-palette"></i> استوديوهات تصميم الصفحات</div>
+                <div class="pill"><i class="fa-solid fa-microchip"></i> أدوات الصيانة الذكية</div>
+            </div>
+        </section>
+
+        <!-- Top Ad Space -->
+        <div class="ad-space">
+            <i class="fa-solid fa-rectangle-ad"></i> مساحة إعلانية مخصصة للشراكات والبرمجيات القادمة (منصات المحافظ والبيع الإلكتروني)
+        </div>
+
+        <!-- Platform Section -->
+        <section id="platform" class="platform-section">
+            <div class="platform-header">
+                <span class="platform-title-badge">المنتج والمنصة الرئيسية</span>
+                <h3>👑 SMART SABA MANAGER</h3>
+                <p class="quote">"لا تقلق وأنت معنا.. حتى لو حذفت، كل شيء محفوظ في أرشيف المبيعات الدائم!"</p>
+                <p style="color: var(--text-secondary); margin-top: 8px;">المنظومة الأذكى والأقوى لإدارة شبكات ميكروتك الإصدار السادس (MikroTik v6)</p>
+            </div>
+
+            <!-- 6 Key Centers Grid -->
+            <div class="features-grid">
+                
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-headset"></i></div>
+                    <h4>1. مركز القيادة ومراقبة الثلاثي</h4>
+                    <ul>
+                        <li>مراقبة مباشرة وكاملة لـ الهوتسبوت (Hotspot).</li>
+                        <li>مراقبة كاملة للبرودباند (Broadband).</li>
+                        <li>إدارة ومراقبة اليوزر مانجر (User Manager).</li>
+                        <li>متابعة الجلسات، المعالج، الذاكرة، ومدة التشغيل لحظة بلحظة.</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-bolt"></i></div>
+                    <h4>2. السرعة الخارقة والأرشيف</h4>
+                    <ul>
+                        <li>مزامنة عشرات الآلاف من الجلسات والمستخدمين في ثوانٍ معدودة.</li>
+                        <li>توليد آلاف الكروت في لحظات خاطفة.</li>
+                        <li>حذف سريع وخاطف للكروت مع حفظ تلقائي ومحمي بالأرشيف الدائم.</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-chart-line"></i></div>
+                    <h4>3. الإمبراطورية المالية والتقارير</h4>
+                    <ul>
+                        <li>تقارير مبيعات مستقلة لكل خادم (الهوتسبوت، البرودباند، اليوزر مانجر).</li>
+                        <li>خصم وحساب عمولات موزعي الكروت تلقائياً.</li>
+                        <li>تقرير مالي تراكمي وشامل (يومي وشهري) يجمع كل المبيعات.</li>
+                        <li>تصدير التقارير بصيغ Excel أو CSV.</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-brands fa-whatsapp"></i></div>
+                    <h4>4. المراسلة الآلية عبر الواتساب</h4>
+                    <ul>
+                        <li>تنبيهات وتذكيرات آلية لعملاء البرودباند.</li>
+                        <li>رسائل تلقائية عند بدء التفعيل والاشتراك.</li>
+                        <li>تنبيهات اقتراب موعد الانتهاء لتجديد الاشتراكات دون انقطاع.</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-brain"></i></div>
+                    <h4>5. مركز فحص ذكاء الشبكة</h4>
+                    <ul>
+                        <li>تشخيص فوري وذكي لاكتشاف المشاكل قبل حدوثها.</li>
+                        <li>أدوات صيانة برمجية وللأجهزة والراوترات.</li>
+                        <li>ضمان عمل الشبكة بأعلى كفاءة وأقصى استقرار.</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                    <h4>6. الاستوديو الذكي للتصميم</h4>
+                    <ul>
+                        <li>استوديو متطور لتصميم قوالب الكروت.</li>
+                        <li>تصميم صفحات تسجيل الدخول (Hotspot Login) بجودة عالية وتفاعلية.</li>
+                        <li>واجهة مترجمة تدعم العربية والإنجليزية لجميع الدول.</li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- Launch Gift Section -->
+            <div class="gift-banner">
+                <div class="gift-badge">🎁 هدية الانطلاق - الإصدار الأول 1.0</div>
+                <h4>نسخة تجريبية كاملة الميزات مجاناً لمدة 30 يوماً!</h4>
+                <p>
+                    بمناسبة إطلاق الإصدار القياسي الأول من منصة <strong>SMART SABA MANAGER</strong>، سيحصل أوائل المستخدمين وأصحاب الشبكات على تراخيص مجانية ممتدة من <strong>6 أشهر إلى سنتين</strong> بحسب الأسبقية.
+                </p>
+                <div class="gift-action-text">
+                    <i class="fa-solid fa-circle-info"></i> احرص فور تثبيت المنصة على الذهاب إلى <strong>"شاشة الترخيص"</strong> أو شاشة <strong>"رأيك يهمنا"</strong> ومراسلة المطور للحصول على ترخيصك المجاني وتقديم اقتراحاتك للإصدارات القادمة!
+                </div>
+            </div>
+
+            <!-- Download Action Box -->
+            <div id="download" class="download-box">
+                <a href="SMART_SABA_MANAGER_Setup.exe" download class="btn-download">
+                    <i class="fa-solid fa-download"></i> تحميل منصة SMART SABA MANAGER الآن
+                </a>
+                <div class="file-info">
+                    الإصدار الأول | تثبيت مباشر للويندوز (Setup.exe) | آمن وموثوق 100%
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Bottom Ad Space -->
+        <div class="ad-space">
+            <i class="fa-solid fa-rectangle-ad"></i> المساحة الإعلانية السفلية المخصصة للشروحات والفيديوهات والأنظمة القادمة
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="https://t.me" target="_blank"><i class="fa-brands fa-telegram"></i> قناة التليجرام الرسمية</a>
+                <a href="#"><i class="fa-brands fa-whatsapp"></i> الدعم الفني والواتساب</a>
+            </div>
+            <p>جميع الحقوق محفوظة © 2026 لمؤسسة <strong>SABA SYS Technologies</strong> - سبأ سيس للحلول البرمجية</p>
+        </div>
+    </footer>
+
+</body>
+</html>
